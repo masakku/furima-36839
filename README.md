@@ -7,11 +7,11 @@
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-| first-name         | string | null: false               |
-| last-name          | string | null: false               |
-| first-name-kana    | string | null: false               |
-| last-name-kana     | string | null: false               |
-| birth-data         | integer| null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birth_data         | date   | null: false               |
 
 
 ### Association
@@ -24,20 +24,25 @@
 
 | Column                  | Type      | Options                                      |
 | ----------------------- | --------- | -------------------------------------------- |
-| item-name               | string    | null: false                                  |
-| item-info               | text      | null: false                                  |
-| item-category           | integer   | null: false                                  |
-| item-sales-status       | integer   | null: false                                  |
-| item-shopping-fee-status| integer   | null: false                                  |
-| item-prefecture         | integer   | null: false                                  |
-| item-scheduled-delivery | integer   | null: false                                  |
-| item-price              | integer   | null: false                                  |
+| name                    | string    | null: false                                  |
+| info                    | text      | null: false                                  |
+| category_id             | integer   | null: false                                  |
+| sales_status_id         | integer   | null: false                                  |
+| shopping_fee_status_id  | integer   | null: false                                  |
+| prefecture_id           | integer   | null: false                                  |
+| scheduled_delivery_id   | integer   | null: false                                  |
+| price                   | integer   | null: false                                  |
 | user                    | references| null: false, foreign_key: true               |
 
 ### Association
 
 - belongs_to :user
 - has_one :order
+- belongs_to :category
+- belongs_to :sales_status
+- belongs_to :shopping_fee_status
+- belongs_to :prefecture
+- belongs_to :scheduled_delivery
 
 
 ## orders テーブル
@@ -45,7 +50,7 @@
 | Column                  | Type      | Options                                      |
 | ----------------------- | --------- | -------------------------------------------- |
 | item                    | references| null: false, foreign_key: true               |
-| buyer                   | references| null: false, foreign_key: true               |
+| user                    | references| null: false, foreign_key: true               |
 
 
 ### Association
@@ -59,18 +64,19 @@
 
 | Column             | Type       | Options                                      |
 | ------------------ | ---------- | -------------------------------------------- |
-| postal-code        | string     | null: false                                  |
-| prefecture         | string     | null: false                                  |
+| postal_code        | string     | null: false                                  |
+| prefecture_id      | integer    | null: false                                  |
 | city               | string     | null: false                                  |
-| house-number       | string     | null: false                                  |
-| building           | string     | null: false                                  |
-| phone-number       | string     | null: false                                  |
+| house_number       | string     | null: false                                  |
+| building           | string     |                                              |
+| phone_number       | string     | null: false                                  |
 | order              | references | null: false, foreign_key: true               |
 
 
 ### Association
 
 - belongs_to :order
+- belongs_to :prefecture
 
 
 
