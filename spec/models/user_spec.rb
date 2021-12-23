@@ -41,7 +41,6 @@ RSpec.describe User, type: :model do
       it 'passwordは全角文字では登録できない' do
         @user.password = 'ああああああ'
         @user.valid?
-        binding.pry
         expect(@user.errors.full_messages).to include('Password には半角英字と数字の両方を含めて設定してください')
       end
       it 'passwordが5文字以下では登録できない' do
@@ -58,6 +57,8 @@ RSpec.describe User, type: :model do
       it 'passwordは半角英数字混合でなければ登録できない' do
         @user.password = '000000'
         @user.password_confirmation = '000000'
+        @user.password = 'aaaaaa'
+        @user.password_confirmation = 'aaaaaa'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password には半角英字と数字の両方を含めて設定してください')
       end
