@@ -10,7 +10,9 @@ class Category < ActiveHash::Base
     { id: 8, name: '家電・スマホ・カメラ' },
     { id: 9, name: 'スポーツ・レジャー' },
     { id: 10, name: 'ハンドメイド' },
-    { id: 11, name: 'その他' }
+    { id: 11, name: 'コスメ・香水・美容' },
+    { id: 12, name: '自動車・バイク' },
+    { id: 13, name: 'その他' }
   ]
 
   include ActiveHash::Associations

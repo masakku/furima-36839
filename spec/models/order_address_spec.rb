@@ -34,7 +34,6 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end
 
-
       it 'postal_codeが空だと保存できない' do
         @order_address.postal_code = ''
         @order_address.valid?

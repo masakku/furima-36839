@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :order_url, only: [:index, :create]
 
-
   def index
     @order_address = OrderAddress.new
   end
