@@ -18,6 +18,7 @@
 
 - has_many :orders
 - has_many :items
+- belongs_to :comment
 
 
 ## items テーブル
@@ -43,6 +44,7 @@
 - belongs_to :shopping_fee_status
 - belongs_to :prefecture
 - belongs_to :scheduled_delivery
+- belongs_to :comment
 
 
 ## orders テーブル
@@ -79,4 +81,15 @@
 - belongs_to :prefecture
 
 
+## comments テーブル
 
+| Column                  | Type      | Options                                      |
+| ----------------------- | --------- | -------------------------------------------- |
+| item_id                 | integer   | null: false                                  |
+| user_id                 | integer   | null: false                                  |
+| text                    | text      | null: false                                  |
+
+
+### Association
+- has_many :users
+- has_many :items
